@@ -1,6 +1,6 @@
 #include "DxLib.h"
 #include "king.h"
-const float King::Scale = 0.001f;		// スケール
+const float King::Scale = 0.0007f;		// スケール
 
 /// <summary>
 /// コンストラクタ
@@ -8,7 +8,7 @@ const float King::Scale = 0.001f;		// スケール
 King::King() : KingHandle(-1)
 {
 	KingHandle = MV1LoadModel("data/king.mv1");
-	pos = VGet(0, 0, 0);
+	pos = VGet(0, 0.2, 0);
 	velocity = VGet(0, 0, 0);
 	dir = VGet(0, 0, 1);
 	// ３Dモデルのポジション設定

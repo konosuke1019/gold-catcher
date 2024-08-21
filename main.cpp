@@ -3,6 +3,7 @@
 #include "game.h"
 #include "Player.h"
 #include "king.h"
+#include "village.h"
 #include "money.h"
 #include "Map.h"
 #include "camera.h"
@@ -30,6 +31,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	Camera* camera = new Camera();
 	Player* player = new Player();
 	King* king = new King();
+	Village* village = new Village();
 	Money* money = new Money();
 	Map* map = new Map();
 	UI* ui = new UI();
@@ -85,9 +87,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 			//•`‰æ
 			map->Draw();
-			player->Draw();
+			village->Draw();
 			king->Draw();
 			money->Draw();
+			player->Draw();
 			break;
 
 			//ƒŠƒUƒ‹ƒg
@@ -113,6 +116,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	//íœ
 	delete(player);
 	delete(king);
+	delete(village);
 	delete(camera);
 	delete(money);
 	delete(map);

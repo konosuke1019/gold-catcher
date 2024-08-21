@@ -12,7 +12,6 @@ public:
 	int GetModelHandle() const { return KingHandle; }
 	const VECTOR& GetPos() const { return pos; }
 	const VECTOR& GetDir() const { return dir; }
-	VECTOR pos;
 
 private:
 	int		KingHandle;		//アニメーション
@@ -20,6 +19,7 @@ private:
 	float	AnimTime;
 	float	AnimAddTime;
 	VECTOR	velocity;		// 移動力.
+	VECTOR pos;
 	VECTOR	dir;			// 回転方向.
 
 	// 静的定数.

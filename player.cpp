@@ -15,12 +15,13 @@ Player::Player(): AnimHandle(-1)
 {
 	// ３Ｄモデルの読み込み
 	AnimHandle= MV1LoadModel("data/ply.mv1");
-
 	position = VGet(0, -0.3, -0.2);
 	velocity = VGet(0, 0, 0);
 	dir = VGet(0, 0, 1);
+
 	// ３Dモデルのポジション設定
 	MV1SetPosition(AnimHandle, position);
+	
 	// 3Dモデルのスケール決定
 	MV1SetScale(AnimHandle, VGet(Scale, Scale, Scale));
 	AttachIndex = MV1AttachAnim(AnimHandle, 0, -1, FALSE);
@@ -44,6 +45,7 @@ void Player::Update()
 {
 	// 入力
 	int Key = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+	
 	// 単純に方向転換
 	dir = VGet(0, 0, 0);
 
