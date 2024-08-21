@@ -22,6 +22,7 @@ private:
 	int		modelHandle;	// モデルハンドル.
 	int		AnimHandle;		// アニメーション
 	int		AttachIndex;
+
 	float	AnimTime;
 	float	AnimAddTime;
 	VECTOR	velocity;		// 移動力.
