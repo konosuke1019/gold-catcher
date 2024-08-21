@@ -14,7 +14,7 @@ const float Player::Scale = 0.001f;		// スケール
 Player::Player(): AnimHandle(-1)
 {
 	// ３Ｄモデルの読み込み
-	//modelHandle = MV1LoadModel("data/player.mv1");
+
 	AnimHandle= MV1LoadModel("data/ply.mv1");
 
 	position = VGet(0, -0.3, -0.2);
