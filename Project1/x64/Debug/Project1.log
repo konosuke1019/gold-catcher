@@ -1,0 +1,6 @@
+﻿  player.cpp
+C:\Users\student\Desktop\新しいフォルダー\新しいフォルダー\3D制作\描画練習2\player.cpp(125,73): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\student\Desktop\新しいフォルダー\新しいフォルダー\3D制作\描画練習2\player.cpp(125,56): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\student\Desktop\新しいフォルダー\新しいフォルダー\3D制作\描画練習2\player.cpp(125,38): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\student\Desktop\新しいフォルダー\新しいフォルダー\3D制作\描画練習2\player.cpp(125,21): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+  Project1.vcxproj -> C:\Users\student\Desktop\新しいフォルダー\新しいフォルダー\3D制作\描画練習2\x64\Debug\Project1.exe

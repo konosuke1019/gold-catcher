@@ -1,0 +1,4 @@
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習\x64\Debug\Project1.exe
+D:\由比ゼミ\school\3D制作\描画練習\x64\Debug\Project1.exe
+D:\由比ゼミ\school\3D制作\描画練習2\x64\Debug\Project1.exe
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\x64\Debug\Project1.exe
