@@ -15,7 +15,7 @@ Player::Player(): AnimHandle(-1)
 {
 	// ３Ｄモデルの読み込み
 	AnimHandle= MV1LoadModel("data/ply.mv1");
-	position = VGet(0, -0.3, -0.2);
+	position = VGet(0, -0.2, -0.2);
 	velocity = VGet(0, 0, 0);
 	dir = VGet(0, 0, 1);
 
@@ -48,7 +48,6 @@ void Player::Update()
 	
 	// 単純に方向転換
 	dir = VGet(0, 0, 0);
-
 	//右
 	if (Key & PAD_INPUT_RIGHT)
 	{
@@ -73,21 +72,17 @@ void Player::Update()
 	}
 
 	//画面外処理
-	if (position.y < -0.2)
+	if (position.x < -1.0)
 	{
-		position.y = -0.2;
+		position.x = -1.0;
 	}
-	if (position.x < -0.4)
+	if (position.x > 1.0)
 	{
-		position.x = -0.4;
-	}
-	if (position.x > 0.4)
-	{
-		position.x = 0.4;
+		position.x = 1.0;
 	}
 
 	// ポジションを更新.
-	velocity = VScale(VScale(dir,0.2), Speed);
+	velocity = VScale(VScale(dir, 0.5), Speed);
 	position = VAdd(position, velocity);
 
 	// 力をかけ終わったベロシティの方向にディレクションを調整.
@@ -117,9 +112,6 @@ void Player::Update()
 void Player::Draw()
 {
 	// ３Ｄモデルの描画
-	//MV1DrawModel(modelHandle);
 	MV1DrawModel(AnimHandle);
-	SetFontSize(20);
-	DrawFormatString(10, 10, (255, 255, 255), "%f,%f,%f", position.x, position.y, position.z);
-	DrawBox(position.x*1000 + 750, position.y*1000 + 650, position.x*1000 + 850, position.y*1000 + 700, (255, 255, 255), false);
+	DrawSphere3D(VGet(position.x, position.y + 0.07, position.z), Playerradius, 100, (255, 255, 255), (255, 255, 255), false);
 }

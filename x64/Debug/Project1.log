@@ -1,4 +1,17 @@
-﻿  village.cpp
-C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\village.cpp(17,39): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
-C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\village.cpp(19,44): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+﻿  Coin.cpp
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.h(5,24): warning C4244: '初期化中': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\player.h(3,28): warning C4305: '初期化中': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(30,10): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(36,40): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(36,32): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(36,22): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(55,21): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(59,14): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(61,53): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(61,36): warning C4305: '引数': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(67,14): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(69,14): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(81,21): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(94,14): warning C4805: '==': 演算中の 'int' 型と 'bool' 型の混用は安全ではありません
+C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\Coin.cpp(121,15): warning C4553: '==': 式の結果が使用されていません。'=' を意図していますか?
   Project1.vcxproj -> C:\Users\konos\OneDrive\デスクトップ\kadai\3D制作\描画練習new\x64\Debug\Project1.exe

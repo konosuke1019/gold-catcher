@@ -8,7 +8,7 @@
 #include "Map.h"
 #include "camera.h"
 #include "UI.h"
-
+	
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	// ＤＸライブラリ初期化処理
@@ -18,7 +18,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	}
 
 	// 画面モードのセット
-	ChangeWindowMode(false);
+	ChangeWindowMode(true);
 	SetGraphMode(1600, 900, 16);
 
 	SetDrawScreen(DX_SCREEN_BACK);	// 裏画面を描画対象にする
@@ -37,8 +37,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	UI* ui = new UI();
 	
 	//時間の取得
-	int firstTime = 0;
-	int secondTime = 0;
+	int firstTime = GetNowCount();
+	int secondTime;
 
 	//エスケープキーが押されるかウインドウが閉じられるまでループ
 	LONGLONG frameTime = 0;
@@ -60,42 +60,57 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		ClearDrawScreen();
 
 		//描画
-		ui->Draw(game->state);
-		
+		ui->Draw(game->state,money->point);
+		map->Draw();
 		//stateごとに処理を行う
 		switch (game->state)
 		{
 			//タイトル
 		case STATE_START:
 			break;
-			
+		case STATE_CHUT:
+			player->Update();
+			money->Update(*player,game->time,game->state);
+			village->Draw();
+			money->Draw(game->state);
+			player->Draw();
+			camera->Update(*player);
+			break;
 			//ゲーム中
 		case STATE_GAME:
 			//時間設定
 			secondTime = GetNowCount();
-			game->time = secondTime - firstTime - 1000;
+			game->time = secondTime - firstTime;
 			game->time *= 0.001;
 
-			SetFontSize(90);
-			//DrawFormatString(100, 100, GetColor(255, 255, 255), "TIME:%d秒", game->time);
+			SetFontSize(50);
+			if (game->time < 0)
+			{
+				DrawFormatString(10, 10, GetColor(255, 255, 255), "終了まで残り:%d秒", 60 - game->time);
+			}
 
 			//アップデート
 			player->Update();
-			king->Update();
-			money->Update(*player);
+			king->Update(game->state);
+			money->Update(*player,game->time,game->state);
 			camera->Update(*player);
 
 			//描画
-			map->Draw();
 			village->Draw();
-			king->Draw();
-			money->Draw();
+			king->Draw(game->state);
+			money->Draw(game->state);
 			player->Draw();
+			if (60 - game->time < 0)
+			{
+				game->state = STATE_END;
+			}
 			break;
 
 			//リザルト
 		case STATE_END:
-			king->Draw();
+			king->Update(game->state);
+			king->Draw(game->state);
+			camera->Update(*player);
 			break;
 			
 			//その他

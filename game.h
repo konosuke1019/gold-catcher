@@ -12,7 +12,8 @@ public:
 
 	//変数
 	int state;
-	int time = 0;
+	int wave;
+	int time;
 
 	//コンストラクタ&デストラクタ
 	GAME();

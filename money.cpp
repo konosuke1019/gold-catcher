@@ -1,81 +1,122 @@
 #include "DxLib.h"
 #include "money.h"
 #include "player.h"
+#include "Coin.h"
+#include "Bill.h"
+#include "Box.h"
+#include "UI.h"
 #include <time.h>
 
-enum Itemkind
-{
-	COIN,
-	DOLLAR,
-	CASE
-};
-
+/// <summary>
+/// コンストラクタ
+/// </summary>
 Money::Money()
-{
-	// ３Ｄモデルの読み込み
-	for (int i = 0; i < 3; i++)
+{	
+	for (int i = 0; i < coinmaxnum; i++)
 	{
-		modelHandle[i] = LoadGraph("data/money/coin.png");//当たり判定確認用
+		coin[i].Init();
 	}
-	//rand = srand((unsigned)time(NULL));
-	pos[0] = VGet(400, 0, 0);
-	pos[1] = VGet(800, -50, 0);
-	pos[2] = VGet(1200, -100, 0);
-
-	// ３Dモデルのポジション設定
-	for (int i = 0; i < 3; i++)
+	/*for (int i = 0; i < billmaxnum; i++)
 	{
-		MV1SetPosition(modelHandle[i], pos[i]);
+		bill[i].Init();
 	}
-	// 3Dモデルのスケール決定
-	//MV1SetScale(modelHandle, VGet(Scale, Scale, Scale));
-	/*AttachIndex = MV1AttachAnim(modelHandle, 0, -1, FALSE);
-	AnimTime = MV1GetAnimTotalTime(modelHandle, AttachIndex);
-	AnimAddTime = 0;*/
+	for (int i = 0; i < boxmaxnum; i++)
+	{
+		box[i].Init();
+	}*/
+	point = 0;
 }
 
+/// <summary>
+/// デストラクタ
+/// </summary>
 Money::~Money()
 {
-	// モデルのアンロード.
-	//MV1DeleteModel(modelHandle);
-	for (int i = 0; i < 3; i++)
+	//モデルのアンロード
+	for (int i = 0; i < coinmaxnum; i++)
 	{
-		MV1DeleteModel(modelHandle[i]);
+		MV1DeleteModel(coin[i].Handle);
 	}
+	/*for (int i = 0; i < billmaxnum; i++)
+	{
+		MV1DeleteModel(bill[i].Handle);
+	}
+	for (int i = 0; i < boxmaxnum; i++)
+	{
+		MV1DeleteModel(box[i].Handle);
+	}*/
 }
 
-//アップデート
-void Money::Update(Player&player)
+/// <summary>
+/// アップデート
+/// </summary>
+/// <param name="player">プレイヤー</param>
+/// <param name="time">現在の残り時間</param>
+/// <param name="state">現在のステート</param>
+void Money::Update(Player&player,int time,int state)
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < coinmaxnum; i++)
 	{
-		if (pos[i].y < 800)
-		{
-			pos[i].y += 10;
-		}
-		else if (pos[i].y = 800)
-		{
-			pos[i].y = 0;
-		}
-		//printfDx("%f,%f,%f\n", pos[i].x, pos[i].y, pos[i].z);
-
-		// エネミーとの当たり判定
-		if (((player.position.x - 45 > pos[i].x - 25 && player.position.x - 45 < pos[i].x + 25) ||
-			(pos[i].x - 25 > player.position.x - 45 && pos[i].x - 25 < player.position.x + 25)) &&
-			((player.position.y + 570 > pos[i].y - 25 && player.position.y + 570 < pos[i].y + 25) ||
-				(pos[i].y - 25 > player.position.y + 700 && pos[i].y + 25 < player.position.y + 700)))
-		{
-			printfDx("当たった\n");
-			//どのお金か判別し、スコアを加算する
-		}
+		coin[i].Update(state,time, Collision(player.position, Playerradius, coin[i].pos, coinradius));
 	}
+	/*for (int i = 0; i < billmaxnum; i++)
+	{
+		coin[i].Update(state, time, Collision(player.position, Playerradius, bill[i].pos, billradius));
+	}
+	for (int i = 0; i < boxmaxnum; i++)
+	{
+		coin[i].Update(state, time, Collision(player.position, Playerradius, box[i].pos, billradius));
+	}*/
 }
 
-void Money::Draw()
+/// <summary>
+/// 当たり判定
+/// </summary>
+/// <param name="position1">位置１</param>
+/// <param name="radius1">円の当たり判定短型の半径</param>
+/// <param name="position2">位置２</param>
+/// <param name="radius2">円の当たり判定短型の半径</param>
+/// <returns>当たっているかどうかの判定</returns>
+bool Money::Collision(VECTOR position1, float radius1,VECTOR position2, float radius2)
 {
-	for (int i = 0; i < 3; i++)
+	// 球の中心点からの距離を計算
+    VECTOR diff = VSub(position1, position2);
+    float distance = VDot(diff, diff);                  // 2乗
+
+    // 両方の半径の長さを計算
+    float radiusSum = radius1 + radius2;
+    float radiusSumSquared = radiusSum * radiusSum;     // 2乗
+
+    // 中心点間の距離よりも半径の和の方が近いなら当たっている
+    if (distance <= radiusSumSquared)
+    {
+        return true;        // 当たった
+    }
+    else
+    {
+        return false;       // 当たってない
+    }
+}
+
+/// <summary>
+/// 描画
+/// </summary>
+void Money::Draw(int state)
+{
+	for (int i = 0; i <coinmaxnum; i++)
 	{
-		DrawRotaGraph(pos[i].x, pos[i].y, 0.1, 0, modelHandle[i], true);
-		DrawBox(pos[i].x - 25, pos[i].y - 25, pos[i].x + 25, pos[i].y + 25, (255, 255, 255), false);
+		coin[i].Draw(state);
+	}
+	/*for (int i = 0; i < billmaxnum; i++)
+	{
+		bill[i].Draw(state);
+	}
+	for (int i = 0; i < boxmaxnum; i++)
+	{
+		box[i].Draw(state);
+	}*/
+	if(state!=STATE_CHUT)
+	{
+		DrawFormatString(1100, 10, (255, 255, 255), "MONEY:$%d", point);
 	}
 }

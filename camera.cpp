@@ -14,7 +14,7 @@ Camera::Camera()
 	,pos (VGet(0, 0, 0))
 {
 	//奥行0.1～1000までをカメラの描画範囲とする
-	SetCameraNearFar(0.1f, 500.0f);
+	SetCameraNearFar(0.1f, 1000.0f);
 }
 
 /// <summary>
@@ -31,9 +31,9 @@ Camera::~Camera()
 void Camera::Update(const Player& player)
 {
 	VECTOR playerPos = player.GetPos();
-	VECTOR cameraPos = VGet(0,0,-0.5);
+	VECTOR cameraPos = VGet(player.position.x,0,-0.5);
 	// 注視する視点は、カメラと平行にまっすぐz=0地点
-	VECTOR lookPos = VGet(0, 0, 100.0f);
+	VECTOR lookPos = VGet(player.position.x, 0, 50.0f);
 
 	//FOV(視野角)
 	SetupCamera_Perspective(fov * (static_cast<float>(M_PI)) * 180.0f);

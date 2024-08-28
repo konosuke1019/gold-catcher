@@ -1,5 +1,6 @@
 #pragma once
 #include "DxLib.h"
+const float Playerradius = 0.04;
 
 class Player
 {
@@ -11,12 +12,18 @@ public:
 	void Draw();			// 描画.
 
 	int point = 0;
+	int x1=750;
+	int x2=850;
+	int y1=550;
+	int y2=700;
 
 	// モデルハンドルの取得.
 	int GetModelHandle() const { return AnimHandle; }
 	const VECTOR& GetPos() const { return position; }
 	const VECTOR& GetDir() const { return dir; }
 	VECTOR	position;			// ポジション.
+
+	const float Getradius() const { return Playerradius; };
 
 private:
 	int		modelHandle;	// モデルハンドル.

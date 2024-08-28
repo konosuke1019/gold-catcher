@@ -12,7 +12,8 @@
 /// </summary>
 GAME::GAME()
 {
-	
+	time = 0;
+	wave = 1;
 }
 
 /// <summary>
@@ -20,7 +21,7 @@ GAME::GAME()
 /// </summary>
 GAME::~GAME()
 {
-	
+	wave = 1;
 }
 
 /// <summary>
@@ -92,19 +93,25 @@ void GAME::Update()
 	{
 		prevKeyOn = false;
 	}
-
 	switch (state)
 	{
 	case STATE_START:
 		// キー入力があったらゲーム開始の状態に
 		if (keyRelease)
 		{
+			state = STATE_CHUT;
+			ChangeState();
+			time = 0;
+		}
+		break;
+	case STATE_CHUT:
+		if (CheckHitKey(KEY_INPUT_SPACE) == 1)
+		{
 			state = STATE_GAME;
 			ChangeState();
 			time = 0;
 		}
 		break;
-	case STATE_GAME:
-		break;
+
 	}
 }

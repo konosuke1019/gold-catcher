@@ -139,7 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bill.cpp" />
+    <ClCompile Include="Box.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="money.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -165,7 +168,10 @@
     <ClCompile Include="village.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bill.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="money.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

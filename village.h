@@ -12,13 +12,14 @@ public:
 	void Draw();
 
 	//ƒ‚ƒfƒ‹ƒnƒ“ƒhƒ‹‚ÌŽæ“¾.
-	int GetModelHandle() const { return HouseHandle[7]; }
+	int GetModelHandle() const { return HouseHandle[15]; }
 	const VECTOR& GetPos() const { return pos; }
 	const VECTOR& GetDir() const { return dir; }
 
 private:
-	int HouseHandle[7];
-	int GroundHandle;
+	int HouseHandle[15];
+	int GroundHandle[5];
+	int GuardHandle[2];
 	VECTOR pos;
 	VECTOR dir;
 
